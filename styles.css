@@ -1,0 +1,1094 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    color: #333; 
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    min-height: 180vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px; 
+}
+
+
+.weather-container {
+    max-width: 700%;
+    width: 100%; /* Adjust width for centering */
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+
+#sunrise-container,
+#sunset-container {
+    justify-content: space-between;
+    margin-top: 20%;
+    margin: 10px 0;
+    background-color: #fff3e0; /* Dark background for dark mode */
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Slightly darker shadow for dark mode */
+}
+
+#sunrise-container p,
+#sunset-container p {
+    margin: 0;
+    font-weight: bold;
+    color: #000000; /* Light text color for dark mode */
+}
+
+/* Light Mode Styles */
+body.light-mode #sunrise-container,
+body.light-mode #sunset-container {
+    background-color: #fff3e0; /* Light orange background for light mode */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a clean look */
+}
+
+body.light-mode #sunrise-container p,
+body.light-mode #sunset-container p {
+    color: #000000; /* Dark text color for light mode */
+}
+
+/* Dark Mode Styles */
+body.dark-mode #sunrise-container,
+body.dark-mode #sunset-container {
+    background-color: #333; /* Dark background for dark mode */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Slightly darker shadow for dark mode */
+}
+
+body.dark-mode #sunrise-container p,
+body.dark-mode #sunset-container p {
+    color: #ffffff; /* Light text color for dark mode */
+}
+
+
+
+/* Light Mode Styles */
+#weather-feels-like,
+#weather-humidity,
+#weather-wind,
+#weather-pressure,
+#weather-sunrise,
+#weather-sunset {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555; /* Default text color for light mode */
+}
+
+/* Dark Mode Styles */
+body.dark-mode #weather-feels-like,
+body.dark-mode #weather-humidity,
+body.dark-mode #weather-wind,
+body.dark-mode #weather-pressure,
+body.dark-mode #weather-sunrise,
+body.dark-mode #weather-sunset {
+    color: #cccccc; /* Light gray text for dark mode */
+}
+
+
+/* Light Mode Styles */
+#weather-description {
+    text-transform: capitalize;
+    font-size: 2.5em;
+    font-weight: 500;
+    margin: 5px 0;
+    color: #000000; /* Black text for light mode */
+}
+
+#weather-location {
+    text-transform: capitalize;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 5px 0;
+    margin-bottom: 20px;
+    color: #5a5a5a; /* Dark gray text for light mode */
+}
+
+/* Hourly Forecast Styling */
+#hourly-forecast {
+    margin-top: 10%;
+    text-transform: capitalize;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+#hourly-forecast .forecast-item {
+    border-top: 2px solid #ddd; /* Light grey border at the top of each forecast item */
+    padding: 10px 0;
+    flex-basis: calc(33.33% - 10px); /* Three items per row */
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Underline for each forecast item */
+#hourly-forecast .forecast-item:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff; /* Bright color for underline */
+    position: absolute;
+    bottom: -2px; /* Positioned at the bottom of the item */
+    left: 0;
+}
+
+/* Remove the border and underline from the last row items */
+#hourly-forecast .forecast-item:nth-last-child(-n+3) {
+    border-top: none;
+}
+
+#hourly-forecast .forecast-item:nth-last-child(-n+3):after {
+    display: none;
+}
+
+/* Dark Mode for Hourly Forecast */
+.dark-mode #hourly-forecast .forecast-item {
+    border-top: 1px solid #555; /* Darker grey border for dark mode */
+}
+
+.dark-mode #hourly-forecast .forecast-item:after {
+    background-color: #bbb; /* Light grey underline in dark mode */
+}
+
+/* Titles */
+h1 {
+    font-size: 2.9rem;
+    color: #007bff; /* Add a bright color to make it stand out */
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Optional: Style for OpenWeather attribution */
+.attribution {
+    align-items: center;
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 10%;
+    text-align: center;
+}
+
+/* Optional: Style for OpenWeather attribution */
+.news {
+    align-items: center;
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+}
+
+.update {
+    align-items: center;
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20%;
+}
+
+
+
+/* Dark Mode Styles */
+body.dark-mode #weather-description {
+    color: #ffffff; /* White text for dark mode */
+}
+
+body.dark-mode #weather-location {
+    color: #c0c0c0; /* Light gray text for dark mode */
+}
+
+body.dark-mode #hourly-forecast {
+    background-color: #333333; /* Dark background for dark mode */
+}
+
+body.dark-mode .hourly-forecast {
+    color: #f0f0f0; /* Light text color for better visibility */
+}
+
+body.dark-mode .hourly-forecast img {
+    filter: brightness(0.8); /* Slightly dim the icons for dark mode */
+}
+
+
+h2 {
+    font-size: 2.5rem;
+    color: #007bff; /* Add a bright color to make it stand out */
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Optional: Add some margin to the containers for spacing */
+.container-fluid {
+    margin: 20px 0;
+}
+
+/* Dark Mode Body Styles */
+body.dark-mode {
+    background-color: #222;
+    color: #f4f4f4; /* Light text color for dark mode */
+}
+
+/* Container styling */
+.container {
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    max-width: 100px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+/* Quote container styling */
+.quote-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 30px; /* Add space below the quote container */
+}
+
+/* Quote container styling */
+.quote-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 30px; /* Add space below the quote container */
+}
+
+
+/* News Container Styling */
+.news-container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    box-sizing: border-box;
+    margin-bottom: 30px; /* Add space below the news container */
+}
+
+/* News Item Styling */
+.news-container .news-item {
+    border-top: 1px solid #ddd; /* Light grey border at the top of each news item */
+    padding: 15px 0; /* Add padding between items */
+    position: relative; /* For underline styling */
+}
+
+/* Underline for each news item */
+.news-container .news-item:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff; /* Bright color for underline */
+    position: absolute;
+    bottom: -2px; /* Positioned at the bottom of the item */
+    left: 0;
+}
+
+/* Remove the border and underline from the last news item */
+.news-container .news-item:last-child {
+    border-top: none;
+}
+
+.news-container .news-item:last-child:after {
+    display: none;
+}
+
+/* Read More Link Styling */
+.read-more {
+    color: red; /* Change text color to red */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Add a smooth transition */
+}
+
+.read-more:hover {
+    color: darkred; /* Optional: darker red on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Ensure consistent spacing between containers */
+.container-fluid {
+    margin: 20px 0;
+}
+
+/* Dark Mode for News Item Borders */
+.dark-mode .news-container .news-item {
+    border-top: 1px solid #555; /* Darker grey border for dark mode */
+}
+
+/* Dark Mode for Underline */
+.dark-mode .news-container .news-item:after {
+    background-color: #bbb; /* Light grey underline in dark mode */
+}
+
+/* Container Spacing and Padding */
+.container {
+    padding: 30px 20px; /* Add more padding inside containers */
+    margin-bottom: 30px; /* Increase margin between sections */
+}
+
+/* Button Styles */
+button {
+    border-radius: 25px; /* Smooth, rounded buttons */
+    padding: 10px 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    color: #fff;
+    background-color: #007bff;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Card-like Container Styles */
+.quote-container, .weather-container, .news-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+    color: #333; /* Default text color */
+}
+
+.quote-container:hover, .weather-container:hover, .news-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Font Scaling */
+body {
+    font-size: 1rem; /* Base font size */
+}
+
+/* Button Styles */
+button {
+    border-radius: 25px; /* Smooth, rounded buttons */
+    padding: 10px 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Card-like Container Styles */
+.quote-container, .weather-container, .news-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.quote-container:hover, .weather-container:hover, .news-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Font Scaling */
+body {
+    font-size: 1rem; /* Base font size */
+}
+
+
+body.dark-mode button {
+    background-color: #1e90ff; /* Lighter blue for dark mode */
+    color: #fff;
+}
+
+body.dark-mode button:hover {
+    background-color: #104e8b; /* Even darker blue on hover */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+}
+
+body.dark-mode .quote-container,
+body.dark-mode .weather-container,
+body.dark-mode .news-container {
+    background: #333; /* Darker container background */
+    color: #f4f4f4; /* Light text color */
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1); /* Lighter shadow */
+}
+
+body.dark-mode .quote-container:hover,
+body.dark-mode .weather-container:hover,
+body.dark-mode .news-container:hover {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15); /* Lighter hover shadow */
+}
+
+/* Default styling for light mode */
+#quote-author {
+    color: #6c757d; /* Default text-muted color */
+}
+
+/* Dark mode styling */
+.dark-mode .quote-author {
+    color: #bebdbd; /* White text color for dark mode */
+}
+
+
+
+/* Quote text styling */
+#quote-text {
+    font-size: 1.8em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+#quote-author {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #888; /* Default author color for light mode */
+    transition: color 0.3s ease;
+}
+
+body.dark-mode #quote-author {
+    color: #ffffff; /* Light author color for dark mode */
+}
+
+/* Search bar and quote type styling */
+#search-bar, #quote-type {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 30px; /* Rounded corners */
+    font-size: 1em;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+#search-bar {
+    margin-top: 50px;
+}
+
+.search-icon {
+    margin-top: 32px;
+}
+
+
+#search-bar:focus, #quote-type:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+body.dark-mode #search-bar, body.dark-mode #quote-type {
+    background-color: #555;
+    border-color: #666;
+    color: #f4f4f4;
+}
+
+/* Search Icon */
+.search-icon {
+    position: absolute;
+    top: 40%;
+    right: 20px; 
+    height: 20px;
+    transform: translateY(-50%); 
+    color: #999;
+    font-size: 1.2em; 
+    pointer-events: none; 
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .search-icon {
+    color: #ccc;
+}
+
+#search-bar:focus + .search-icon {
+    color: #007bff;
+}
+
+/* General Button Styles */
+button {
+    padding: 12px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover Effect */
+button:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+/* Active Effect */
+button:active {
+    transform: translateY(1px); /* Slight press effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+}
+
+/* New Quote Button */
+#new-quote {
+    justify-content: right;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#new-quote:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode New Quote Button */
+body.dark-mode #new-quote {
+    background-color: #0056b3;
+}
+
+body.dark-mode #new-quote:hover {
+    background-color: #003f7f;
+}
+
+/* Previous Quote, Voice Button, and Voice Command */
+ #voice-command {
+    border-radius: 20px;
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #ea2437;
+    font-size: 20px;
+    color: #000000;
+    letter-spacing: 1px;
+}
+
+#prev-quote {
+    border-radius: 20px;
+    margin-top: 10px;
+    justify-content: left;
+    background-color: #ea2437;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#voice-button {
+    border-radius: 40px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #e6c910;
+    color: #000000;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+#prev-quote:hover,  #voice-command:hover {
+    background-color: #cd001f;
+}
+
+#voice-button:hover {
+    background-color: #ffaa00;
+}
+
+/* Voice Command Active and Off State */
+#voice-command.active {
+    background-color: #28a745; /* Green when active */
+    color: #000000;
+}
+
+#voice-command.off {
+    background-color: #dc3545; /* Red when off */
+    color: #000000;
+}
+
+
+/* Footer Styling */
+.footer {
+    background-color: transparent;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+/* Sidebar Footer */
+.sidebar .footer {
+    position: static;
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+}
+
+.mode-toggle button:hover {
+    color: var(--icon-hover-color, #555); /* Color on hover */
+    background-color: transparent;
+}
+
+/* Search Icon */
+.search-icon {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%); 
+    color: #999;
+    font-size: 1.2em; 
+    pointer-events: none; 
+    transition: color 0.3s ease;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+#search-bar:focus + .search-icon {
+    color: #007bff;
+}
+
+/* Modal Container */
+.modal-dialog {
+    max-width: 600px; /* Adjust the width as needed */
+    margin: 1.75rem auto; /* Center the modal vertically and horizontally */
+}
+
+/* Modal Content */
+.modal-content {
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #fff; /* Background color */
+}
+
+/* Modal Header */
+.modal-header {
+    border-bottom: 1px solid #ddd; /* Border between header and body */
+    background-color: #f8f9fa; /* Light background for the header */
+    padding: 1rem 1.5rem; /* Padding for header */
+}
+
+.modal-title {
+    font-size: 1.25rem; /* Larger font size for the title */
+    font-weight: 500; /* Medium font weight */
+    color: #333; /* Dark text color */
+}
+
+/* Close Button */
+.modal-header .close {
+    font-size: 1.5rem; /* Larger close button */
+    color: #ff0000; /* Primary color for the close button */
+}
+
+.modal-header .close:hover {
+    color: #f13333; /* Darker shade on hover */
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 1.5rem; /* Padding for body */
+    color: #000000; /* Text color */
+    font-size: 1rem; /* Font size */
+}
+
+/* Modal Footer */
+.modal-footer {
+    border-top: 1px solid #ddd; /* Border between body and footer */
+    padding: 1rem; /* Padding for footer */
+    background-color: #f8f9fa; /* Light background for footer */
+}
+
+/* Footer Buttons */
+.modal-footer .btn {
+    border-radius: 5px; /* Rounded corners for buttons */
+    font-size: 0.875rem; /* Smaller font size */
+    padding: 0.5rem 1rem; /* Padding for buttons */
+}
+
+.modal-footer .btn-secondary {
+    background-color: #e81616; /* Secondary button color */
+    color: #fff; /* White text color */
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #f33636; /* Darker shade on hover */
+}
+
+.modal-footer .btn-primary {
+    background-color: #ff0000; /* Primary button color */
+    color: #fff; /* White text color */
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Share Button Styling */
+.share-button {
+    background-color: #3d84fe;
+    margin-right: 0px;
+    border-radius: 40px;
+    margin-top: 10px;
+    color: #000000;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+.share-button i {
+    font-size: 15px; /* Icon size */
+}
+
+.share-button:hover {
+    background-color: #0055d5; /* Darker green on hover */
+}
+
+.copy-btn {
+    margin-right: 0px;
+    border-radius: 40px;
+    margin-top: 20px;
+    background-color: #b6b6b6;
+    color: #000000;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn i {
+    font-size: 15px;
+}
+
+.copy-btn:hover {
+    background-color: #5a6268;
+}
+
+
+.menu-icon {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.menu-icon:hover {
+    color: #103be6;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(33, 54, 75);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 999;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+
+.sidebar .closebtn {
+    background-color: rgb(44, 62, 80);
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 30px;
+}
+
+.sidebar .closebtn:hover {
+    color: #ff0303;
+}
+
+
+/* Sidebar Footer */
+.sidebarfooter {
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 400px;
+    margin-left: 0%;
+}
+
+
+
+/* Responsive styles */
+@media (max-width: 991px) {
+    .container {
+        width: 90%;
+    }
+}
+
+body.dark-mode .weather-container {
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+}
+
+.weather-item h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.weather-item p {
+    font-size: 1.2em;
+    margin: 8px 0;
+    font-weight: 500;
+}
+
+.weather-item .temperature {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.weather-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+
+@media (max-width: 991px) {
+    /* Adjust containers on smaller screens */
+    .col-lg-3 {
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    body {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+    }
+}
+
+/* Gradients for Background */
+body {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Soft blue gradient background */
+    color: #333; /* Default text color */
+}
+
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: linear-gradient(135deg, #2c3e50, #4a4a4a); /* Darker gradient background */
+    color: #f4f4f4; /* Light text color */
+}
+
+/* Titles */
+body.dark-mode h2 {
+    color: #1e90ff; /* Lighter blue for dark mode */
+}
+
+/* Button Styles */
+body.dark-mode button {
+    background-color: #1e90ff; /* Lighter blue for dark mode */
+    color: #fff;
+}
+
+body.dark-mode button:hover {
+    background-color: #104e8b; /* Even darker blue on hover */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+}
+
+/* Card-like Container Styles */
+body.dark-mode .quote-container,
+body.dark-mode .weather-container,
+body.dark-mode .news-container {
+    background: #333; /* Darker container background */
+    color: #f4f4f4; /* Light text color */
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1); /* Lighter shadow */
+}
+
+body.dark-mode .quote-container:hover,
+body.dark-mode .weather-container:hover,
+body.dark-mode .news-container:hover {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15); /* Lighter hover shadow */
+}
+
+@media (max-width: 768px) {
+    .caption-container h5 {
+        font-size: 1.2rem;
+    }
+    .caption-container p {
+        font-size: 0.9rem;
+    }
+}
+
+.text-white {
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Adds depth and improves visibility */
+}
+
+.caption-container {
+    padding: 10px 15px;
+    margin-top: 10px;
+}
+
+.caption-container {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background for better visibility */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.carousel-item {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.footer {
+    position: relative;
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    text-align: left;
+}
+.footer h5 {
+    color: #f9b233;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.footer p, .footer a {
+    color: #bbb;
+}
+.footer a:hover {
+    color: #fff;
+}
+
+@media (max-width: 800px) {
+    .footer .col-md-3 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .footer .newsletter-form input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.social-links li {
+    margin-top: 100%;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.social-link {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.social-link li a {
+    color: #bbb;
+    font-size: 18px;
+}
+
+.social-link li a:hover {
+    color: #f9b233;
+}
+
+.social-links li a {
+    color: #bbb;
+    font-size: 18px;
+}
+.social-links li a:hover {
+    color: #f9b233;
+}
+
+.newsletter-form input {
+    width: calc(100% - 120px);
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+.newsletter-form button {
+    width: 100px;
+    padding: 10px;
+    background-color: #f9b233;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.newsletter-form button:hover {
+    background-color: #ffaf1a;
+}
+
+.footer-links li, .social-links li {
+    margin-bottom: 10px;
+}
+.footer-links li a, .social-links li a {
+    display: inline-block;
+    padding: 5px 0;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #bbb;
+}
+.footer-bottom a {
+    color: #f9b233;
+}
+.footer-bottom a:hover {
+    color: #fff;
+}
+
+
+
