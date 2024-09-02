@@ -1004,6 +1004,7 @@ body.dark-mode .news-container:hover {
     margin-bottom: 20px;
 }
 .footer p, .footer a {
+    text-align: left;
     color: #bbb;
 }
 .footer a:hover {
@@ -1050,6 +1051,7 @@ body.dark-mode .news-container:hover {
 }
 
 .newsletter-form input {
+    align-items: left;
     width: calc(100% - 120px);
     padding: 10px;
     border: none;
