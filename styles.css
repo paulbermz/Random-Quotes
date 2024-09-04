@@ -95,7 +95,7 @@ body.dark-mode #weather-sunset {
 /* Light Mode Styles */
 #weather-description {
     text-transform: capitalize;
-    font-size: 2.5em;
+    font-size: 2.3em;
     font-weight: 500;
     margin: 5px 0;
     color: #000000; /* Black text for light mode */
@@ -991,6 +991,21 @@ body.dark-mode .news-container:hover {
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
+.social-link {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.social-link li a {
+    color: #bbb;
+    font-size: 18px;
+}
+
+.social-link li a:hover {
+    color: #f9b233;
+}
+
+
 .footer {
     position: relative;
     background-color: #333;
@@ -1004,7 +1019,6 @@ body.dark-mode .news-container:hover {
     margin-bottom: 20px;
 }
 .footer p, .footer a {
-    text-align: left;
     color: #bbb;
 }
 .footer a:hover {
@@ -1028,20 +1042,6 @@ body.dark-mode .news-container:hover {
     margin-right: 15px;
 }
 
-.social-link {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-.social-link li a {
-    color: #bbb;
-    font-size: 18px;
-}
-
-.social-link li a:hover {
-    color: #f9b233;
-}
-
 .social-links li a {
     color: #bbb;
     font-size: 18px;
@@ -1050,22 +1050,39 @@ body.dark-mode .news-container:hover {
     color: #f9b233;
 }
 
+/* Newsletter Form */
+.newsletter-form {
+    display: flex;
+    justify-content: center; /* Center the form */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
 .newsletter-form input {
-    align-items: left;
-    width: calc(100% - 120px);
+    flex: 1;
+    min-width: 200px; /* Ensure a minimum width */
     padding: 10px;
     border: none;
     border-radius: 5px 0 0 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
+
 .newsletter-form button {
-    width: 100px;
+    min-width: 200px;
     padding: 10px;
     background-color: #f9b233;
     color: #fff;
     border: none;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
 }
+
+footer.dark-mode {
+    color:  #1e90ff;
+}
+
 .newsletter-form button:hover {
     background-color: #ffaf1a;
 }
@@ -1077,6 +1094,7 @@ body.dark-mode .news-container:hover {
     display: inline-block;
     padding: 5px 0;
 }
+
 
 .footer-bottom {
     border-top: 1px solid #444;
@@ -1091,6 +1109,11 @@ body.dark-mode .news-container:hover {
 .footer-bottom a:hover {
     color: #fff;
 }
+
+
+
+
+
 
 
 
