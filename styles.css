@@ -832,17 +832,12 @@ body.dark-mode #new-quote:hover {
 
 
 .sidebar .closebtn {
-    background-color: rgb(44, 62, 80);
+    background-color: transparent;
     position: absolute;
     top: 0px;
     right: 10px;
     font-size: 30px;
 }
-
-.sidebar .closebtn:hover {
-    color: #ff0303;
-}
-
 
 /* Sidebar Footer */
 .sidebarfooter {
