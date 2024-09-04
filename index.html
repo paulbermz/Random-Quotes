@@ -14,7 +14,7 @@
 </head>
 <body>
     <!-- Sidebar Menu Icon -->
-<div id="menu-icon" title="Menu Icon" class="menu-icon">&#9776;</div>
+<div id="menu-icon" title="Menu" class="menu-icon">&#9776;</div>
 
 <!-- Sidebar -->
 <div id="sidebar" class="sidebar">
@@ -26,9 +26,9 @@
     <a href="#" title="About" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class="fas fa-info-circle"></i> About</a>
     
     <ul class="social-links">
-        <li><a href="https://www.facebook.com/paul.bernal.94651774"><i class="fab fa-facebook"></i></a></li>
-        <li><a href="https://www.instagram.com/paulbrnl_?igsh=MXViN2FhMWhoMXp1aA=="><i class="fab fa-twitter"></i></a></li>
-        <li><a href="https://www.instagram.com/paulbrnl_?igsh=MXViN2FhMWhoMXp1aA=="><i class="fab fa-instagram"></i></a></li>
+        <li><a href="https://www.facebook.com/paul.bernal.94651774"><i class="fab fa-facebook" title="Facebook"></i></a></li>
+        <li><a href="https://x.com/paulbermz"><i class="fab fa-twitter" title="Twitter"></i></a></li>
+        <li><a href="https://www.instagram.com/paulbrnl_?igsh=MXViN2FhMWhoMXp1aA=="><i class="fab fa-instagram" title="Instagram"></i></a></li>
     </ul>
 
     <div class="footer-bottom text-center mt-4">
@@ -57,16 +57,16 @@
             <p id="quote-author">— Author Name</p>
         </div>
         <div class="button-container">
-            <button id="prev-quote">Prev</button>
+            <button id="prev-quote" title="Previous Quote">Prev</button>
             <button id="voice-command" class="btn btn-info" title="Activate Voice Commands"><i class="fas fa-microphone"></i></button>
-            <button id="new-quote">New</button>
+            <button id="new-quote" title="New Quote">New</button>
 
             <div>
-                <button id="copy-quote" class="copy-btn">
+                <button id="copy-quote" class="copy-btn" title="Copy Quote">
                     <i class="fa fa-copy"></i>
                 </button>
                 <button id="voice-button" title="Play voice"><i class="fas fa-volume-up"></i></button>
-                <button id="twitter-button" class="share-button">
+                <button id="twitter-button" class="share-button" title="Share">
                     <i class="fab fa-twitter"></i>
                 </button>
             </div>
@@ -110,7 +110,7 @@
                 </div>
             </div>
             <!-- Carousel -->
-             <h1>News Update</h1>
+             <h2>News Update</h2>
              <div class="update">Powered by <a href="https://newsdata.io/">News Data</a>
             <div id="demo" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators/dots -->
@@ -129,7 +129,7 @@
             </div>
             <!-- News Feed Container -->
             <div class="quote-container p-5 my-5 border">
-                        <h1>News Feed</h1>
+                        <h2>News Feed</h2>
                          <!-- Attribution -->
                          <div class="news">Powered by <a href="https://newsdata.io/">News Data</a>
                          </div>
@@ -241,34 +241,34 @@
                 <div class="row">
                     <div class="col-md-4 mb-4">
                         <h5>About Us</h5>
-                        <p>This system, crafted with a blend of dedication and passion for web development.</p>
+                        <p>This system, crafted with a blend of dedication 
+                            and passion for web development.</p>
                     </div>
                     <!-- Quick Links Section -->
                      <div class="col-md-4 mb-4">
-                 <h5 class="text-uppercase">Quick Links</h5>
+                 <h5 class="#">Quick Links</h5>
                   <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Home</a></li>
-                    <li><a href="#" class="text-white">Services</a></li>
-                    <li><a href="#" class="text-white">Blog</a></li>
-                    <li><a href="#" class="text-white">Contact Us</a></li>
+                    <li><a href="#" class="text-white" title="Home">Home</a></li>
+                    <li><a href="#" class="text-white" title="Services">Services</a></li>
+                    <li><a href="#" class="text-white" title="Blog">Blog</a></li>
+                    <li><a href="#" class="text-white" title="Contact">Contact</a></li>
                 </ul>
                    </div>
                      <!-- Follow Us Section -->
                        <div class="col-md-4 mb-4">
-                    <h5 class="text-uppercase">Follow Us</h5>
+                    <h5 class="#">Follow Us</h5>
                  <div>
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/paul.bernal.94651774" class="text-white me-3" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/paulbermz" class="text-white me-3" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/paulbrnl_?igsh=MXViN2FhMWhoMXp1aA==" class="text-white me-3" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://paulbermz.github.io/testing/" class="text-white" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
                 </div>
               </div>
                  </div>
                     <div class="col-md-3">
-                        <h5>Subscribe</h5>
                         <form class="newsletter-form">
                             <input type="email" placeholder="Enter your email">
-                            <button type="submit">Subscribe</button>
+                            <button type="submit" title="Subscribe">Subscribe</button>
                         </form>
                     </div>
                 </div>
@@ -282,6 +282,12 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
