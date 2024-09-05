@@ -706,12 +706,9 @@ body.dark-mode #new-quote:hover {
 
 /* Close Button */
 .modal-header .close {
+    background-color: transparent;
     font-size: 1.5rem; /* Larger close button */
     color: #ff0000; /* Primary color for the close button */
-}
-
-.modal-header .close:hover {
-    color: #f13333; /* Darker shade on hover */
 }
 
 /* Modal Body */
@@ -1108,6 +1105,10 @@ footer.dark-mode {
 .footer-bottom a:hover {
     color: #fff;
 }
+
+
+
+
 
 
 
