@@ -771,7 +771,7 @@ $('#prev-quote').on('click', function () {
 
 
 $(document).ready(function () {
-    const apiKey = 'pub_51915300fc0342c9478236b26598e715276c6';
+    const apiKey = 'pub_519159624462e0acb90653469dc9d12e062a1';
     const apiUrl = `https://newsdata.io/api/1/news?apikey=${apiKey}&country=ph&language=en`;
 
     function fetchNewsUpdates() {
@@ -844,7 +844,7 @@ $(document).ready(function () {
 
 
 // Replace this with your actual NewsData.io API key
-const apiKey = "pub_51915300fc0342c9478236b26598e715276c6";
+const apiKey = "pub_519159624462e0acb90653469dc9d12e062a1";
 
 // Function to fetch news feed data from the API
 function fetchNewsData() {
