@@ -785,10 +785,18 @@ $(document).ready(function () {
                     let truncatedDescription = descriptionWords.slice(0, wordLimit).join(' ');
                     let isTruncated = descriptionWords.length > wordLimit;
 
-                    // Calculate time difference in hours
+                    // Calculate time difference in hours and days
                     let pubDate = new Date(news.pubDate);
                     let currentTime = new Date();
                     let timeDifference = Math.floor((currentTime - pubDate) / (1000 * 60 * 60)); // Difference in hours
+                    let timeDisplay;
+
+                    if (timeDifference < 24) {
+                        timeDisplay = `${timeDifference} hours ago`;
+                    } else {
+                        let daysDifference = Math.floor(timeDifference / 24); // Convert hours to days
+                        timeDisplay = `${daysDifference} days ago`;
+                    }
 
                     newsHtml += `
                         <div class="news-item">
@@ -796,13 +804,18 @@ $(document).ready(function () {
                             <p>${truncatedDescription}${isTruncated ? '...' : ''}</p>
                             ${isTruncated ? `<a href="#" class="read-more">Read more</a>` : ''}
                             <span class="full-description" style="display: none;">${news.description}</span>
-                            <p>Posted ${timeDifference} hours ago</p>
+                            <p>Posted ${timeDisplay}</p>
                             <a href="${news.link}" target="_blank">Go to Source</a>
                         </div>
                     `;
                 });
             } else {
-                newsHtml = '<p>No news available at the moment.</p>';
+                if ($('#news-updates').html().trim() === '') {
+                    newsHtml = '<p>No news available at the moment.</p>';
+                } else {
+                    // If there's already news displayed, do nothing (keep current news)
+                    return;
+                }
             }
             $('#news-updates').html(newsHtml);
 
@@ -822,8 +835,13 @@ $(document).ready(function () {
         });
     }
 
+    // Fetch news updates on page load
     fetchNewsUpdates();
+
+    // Fetch new updates every 10 minutes (600,000 milliseconds)
+    setInterval(fetchNewsUpdates, 600000);
 });
+
 
 // Replace this with your actual NewsData.io API key
 const apiKey = "pub_51915300fc0342c9478236b26598e715276c6";
