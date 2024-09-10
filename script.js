@@ -774,6 +774,8 @@ $(document).ready(function () {
     const apiKey = 'pub_519159624462e0acb90653469dc9d12e062a1';
     const apiUrl = `https://newsdata.io/api/1/news?apikey=${apiKey}&country=ph&language=en`;
 
+    let previousNews = []; // To store previously fetched news
+
     function fetchNewsUpdates() {
         $.get(apiUrl, function (data) {
             let newsHtml = '';
@@ -781,43 +783,55 @@ $(document).ready(function () {
 
             if (data.results && data.results.length > 0) {
                 data.results.forEach(news => {
-                    let descriptionWords = news.description.split(' ');
-                    let truncatedDescription = descriptionWords.slice(0, wordLimit).join(' ');
-                    let isTruncated = descriptionWords.length > wordLimit;
+                    // Check if news already exists in previous news
+                    if (!previousNews.find(item => item.link === news.link)) {
+                        previousNews.push(news); // Add to previous news
 
-                    // Calculate time difference in minutes, hours, and days
-                    let pubDate = new Date(news.pubDate);
-                    let currentTime = new Date();
-                    let timeDifference = Math.floor((currentTime - pubDate) / (1000 * 60)); // Difference in minutes
-                    let timeDisplay;
+                        let descriptionWords = news.description.split(' ');
+                        let truncatedDescription = descriptionWords.slice(0, wordLimit).join(' ');
+                        let isTruncated = descriptionWords.length > wordLimit;
 
-                    if (timeDifference < 60) {
-                        timeDisplay = `${timeDifference} minutes ago`;
-                    } else if (timeDifference < 1440) { // Less than 24 hours
-                        let hoursDifference = Math.floor(timeDifference / 60);
-                        timeDisplay = `${hoursDifference} hours ago`;
-                    } else {
-                        let daysDifference = Math.floor(timeDifference / 1440); // Convert minutes to days
-                        timeDisplay = daysDifference === 1 ? '1 day ago' : `${daysDifference} days ago`;
+                        // Calculate time difference in minutes, hours, and days
+                        let pubDate = new Date(news.pubDate);
+                        let currentTime = new Date();
+                        let timeDifference = Math.floor((currentTime - pubDate) / 1000); // Difference in seconds
+                        let timeDisplay;
+
+                        if (timeDifference < 60) {
+                            timeDisplay = `${timeDifference} minutes ago`;
+                        } else if (timeDifference < 3600) {
+                            let minutes = Math.floor(timeDifference / 60);
+                            timeDisplay = `${minutes} minutes ago`;
+                        } else if (timeDifference < 86400) {
+                            let hours = Math.floor(timeDifference / 3600);
+                            timeDisplay = `${hours} hours ago`;
+                        } else {
+                            let days = Math.floor(timeDifference / 86400);
+                            timeDisplay = `${days} days ago`;
+                        }
+
+                        newsHtml += `
+                            <div class="news-item">
+                                <h3>${news.title}</h3>
+                                <p>${truncatedDescription}${isTruncated ? '...' : ''}</p>
+                                ${isTruncated ? `<a href="#" class="read-more">Read more</a>` : ''}
+                                <span class="full-description" style="display: none;">${news.description}</span>
+                                <p>Posted ${timeDisplay}</p>
+                                <a href="${news.link}" target="_blank">Go to Source</a>
+                            </div>
+                        `;
                     }
-
-                    newsHtml += `
-                        <div class="news-item">
-                            <h3>${news.title}</h3>
-                            <p>${truncatedDescription}${isTruncated ? '...' : ''}</p>
-                            ${isTruncated ? `<a href="#" class="read-more">Read more</a>` : ''}
-                            <span class="full-description" style="display: none;">${news.description}</span>
-                            <p>Posted ${timeDisplay}</p>
-                            <a href="${news.link}" target="_blank">Go to Source</a>
-                        </div>
-                    `;
                 });
             } else {
                 if ($('#news-updates').html().trim() === '') {
                     newsHtml = '<p>No news available at the moment.</p>';
                 }
             }
-            $('#news-updates').html(newsHtml);
+
+            // If no new news, keep the old news displayed
+            if (newsHtml.trim() !== '') {
+                $('#news-updates').html(newsHtml);
+            }
 
             // Event listener for "Read more" toggle
             $('.read-more').on('click', function (e) {
@@ -841,6 +855,7 @@ $(document).ready(function () {
     // Fetch new updates every 10 minutes (600,000 milliseconds)
     setInterval(fetchNewsUpdates, 600000);
 });
+
 
 
 
