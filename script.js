@@ -785,17 +785,20 @@ $(document).ready(function () {
                     let truncatedDescription = descriptionWords.slice(0, wordLimit).join(' ');
                     let isTruncated = descriptionWords.length > wordLimit;
 
-                    // Calculate time difference in hours and days
+                    // Calculate time difference in minutes, hours, and days
                     let pubDate = new Date(news.pubDate);
                     let currentTime = new Date();
-                    let timeDifference = Math.floor((currentTime - pubDate) / (1000 * 60 * 60)); // Difference in hours
+                    let timeDifference = Math.floor((currentTime - pubDate) / (1000 * 60)); // Difference in minutes
                     let timeDisplay;
 
-                    if (timeDifference < 24) {
-                        timeDisplay = `${timeDifference} hours ago`;
+                    if (timeDifference < 60) {
+                        timeDisplay = `${timeDifference} minutes ago`;
+                    } else if (timeDifference < 1440) { // Less than 24 hours
+                        let hoursDifference = Math.floor(timeDifference / 60);
+                        timeDisplay = `${hoursDifference} hours ago`;
                     } else {
-                        let daysDifference = Math.floor(timeDifference / 24); // Convert hours to days
-                        timeDisplay = `${daysDifference} days ago`;
+                        let daysDifference = Math.floor(timeDifference / 1440); // Convert minutes to days
+                        timeDisplay = daysDifference === 1 ? '1 day ago' : `${daysDifference} days ago`;
                     }
 
                     newsHtml += `
@@ -812,9 +815,6 @@ $(document).ready(function () {
             } else {
                 if ($('#news-updates').html().trim() === '') {
                     newsHtml = '<p>No news available at the moment.</p>';
-                } else {
-                    // If there's already news displayed, do nothing (keep current news)
-                    return;
                 }
             }
             $('#news-updates').html(newsHtml);
@@ -841,6 +841,7 @@ $(document).ready(function () {
     // Fetch new updates every 10 minutes (600,000 milliseconds)
     setInterval(fetchNewsUpdates, 600000);
 });
+
 
 
 // Replace this with your actual NewsData.io API key
