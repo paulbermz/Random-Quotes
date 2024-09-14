@@ -1106,6 +1106,66 @@ footer.dark-mode {
     color: #fff;
 }
 
+/* Base styles for light mode */
+:root {
+  --bg-color: #ffffff; /* Light background */
+  --text-color: #000000; /* Dark text for light mode */
+  --time-color: #ff0000; /* Dark time color for light mode */
+  --box-shadow-color: rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+body.dark-mode {
+  --bg-color: #2b2b2b; /* Dark background */
+  --text-color: #1e90ff; /* Light text for dark mode */
+  --time-color: #ffd700; /* Gold time color for dark mode */
+  --box-shadow-color: rgba(255, 255, 255, 0.1); /* Light shadow for dark mode */
+}
+
+#date-time-container {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--text-color); /* Adapt text color based on mode */
+  background-color: var(--bg-color); /* Adapt background color */
+  padding: 15px 25px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px var(--box-shadow-color); /* Adapt shadow */
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Roboto", sans-serif; /* Clean and modern font */
+  letter-spacing: 1px; /* Add slight spacing between letters */
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+#current-time {
+  display: block; /* Display time below the date */
+  font-size: 30px; /* Larger font for time */
+  margin-top: 15px; /* Add spacing between date and time */
+  color: var(--time-color); /* Adapt time color */
+}
+
+#current-day,
+#current-month,
+#current-year {
+  margin-right: 5px; /* Space between date elements */
+}
+
+#clock-icon {
+  font-size: 40px; /* Larger icon size to match the time */
+  color: var(--time-color); /* Same color as the time */
+  vertical-align: middle; /* Align icon with the text */
+  margin-top: 10px;
+  margin-right: 10px; /* Space between icon and time */
+}
+
+#time-wrapper {
+  display: flex; /* Flex layout for icon and time */
+  align-items: center; /* Vertically center the icon and time */
+  justify-content: center; /* Center time horizontally */
+  margin-top: 10px; /* Space between date and time */
+}
+
+
 
 
 
