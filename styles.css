@@ -1165,7 +1165,15 @@ body.dark-mode {
   margin-top: 10px; /* Space between date and time */
 }
 
-
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px; /* Changed from left to right */
+  z-index: 0;
+}
 
 
 
