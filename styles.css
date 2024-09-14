@@ -1123,12 +1123,12 @@ body.dark-mode {
 
 #date-time-container {
   display: inline-block;
-  font-size: 40px;
+  font-size: 43px;
   font-weight: 600;
   color: var(--text-color); /* Adapt text color based on mode */
   background-color: var(--bg-color); /* Adapt background color */
   padding: 15px 25px;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 15px; /* Rounded corners */
   box-shadow: 0 4px 6px var(--box-shadow-color); /* Adapt shadow */
   margin-bottom: 20px;
   text-align: center;
