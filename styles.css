@@ -112,35 +112,33 @@ body.dark-mode #weather-sunset {
 
 /* Hourly Forecast Styling */
 #hourly-forecast {
-    margin-top: 10%;
-    text-transform: capitalize;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 10%;
+  text-transform: capitalize;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 icons per row */
+  grid-gap: 15px; /* Space between items */
+  padding: 10px;
+  border-radius: 15px;
+  background-color: transparent;
 }
 
 #hourly-forecast .forecast-item {
-    border-top: 2px solid #ddd; /* Light grey border at the top of each forecast item */
-    padding: 10px 0;
-    flex-basis: calc(33.33% - 10px); /* Three items per row */
-    margin-bottom: 15px;
-    position: relative;
+  border-top: 2px solid #ddd; /* Light grey border at the top of each forecast item */
+  padding: 10px 0;
+  text-align: center; /* Center align the content */
+  position: relative;
 }
 
 /* Underline for each forecast item */
 #hourly-forecast .forecast-item:after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #007bff; /* Bright color for underline */
-    position: absolute;
-    bottom: -2px; /* Positioned at the bottom of the item */
-    left: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #007bff; /* Bright color for underline */
+  position: absolute;
+  bottom: -2px; /* Positioned at the bottom of the item */
+  left: 0;
 }
 
 /* Remove the border and underline from the last row items */
