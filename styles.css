@@ -120,6 +120,7 @@ body.dark-mode #weather-sunset {
   padding: 10px;
   border-radius: 15px;
   background-color: transparent;
+  margin-right: 10%;
 }
 
 #hourly-forecast .forecast-item {
