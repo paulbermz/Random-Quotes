@@ -1293,6 +1293,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  function openNav() {
+  document.getElementById("sidebar").style.left = "0";
+  document.getElementById("menu-icon").style.display = "none";
+}
+
+function closeNav() {
+  document.getElementById("sidebar").style.left = "-250px";
+  document.getElementById("menu-icon").style.display = "block";
+}
+
   // Event listener for the "New Quote" button
   $("#new-quote").on("click", function () {
     const $newQuoteButton = $(this);
