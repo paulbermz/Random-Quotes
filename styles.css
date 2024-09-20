@@ -1136,10 +1136,9 @@ body.dark-mode {
   font-size: 43px;
   font-weight: 600;
   color: var(--text-color); /* Adapt text color based on mode */
-  background-color: var(--bg-color); /* Adapt background color */
+  background-color: transparent;
   padding: 15px 25px;
   border-radius: 15px; /* Rounded corners */
-  box-shadow: 0 4px 6px var(--box-shadow-color); /* Adapt shadow */
   margin-bottom: 20px;
   text-align: center;
   font-family: "Roboto", sans-serif; /* Clean and modern font */
