@@ -2011,13 +2011,13 @@ function updateDateTime() {
 
   // Arrays for day and month names
   const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    "SUNDAY",
+    "MONDAY",
+    "TUESDAY",
+    "WEDNESDAY",
+    "THURSDAY",
+    "FRIDAY",
+    "SATURDAY",
   ];
   const months = [
     "January",
@@ -2036,6 +2036,7 @@ function updateDateTime() {
 
   // Get day, month, year, and time
   const day = days[date.getDay()];
+  const dayNumber = date.getDate(); // Get day number
   const month = months[date.getMonth()];
   const year = date.getFullYear();
   let hours = date.getHours();
@@ -2050,7 +2051,7 @@ function updateDateTime() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
 
   // Display in HTML
-  document.getElementById("current-day").textContent = day;
+  document.getElementById("current-day").textContent = `${dayNumber} ${day}`;
   document.getElementById("current-month").textContent = month;
   document.getElementById("current-year").textContent = year;
   document.getElementById("current-time").textContent =
@@ -2062,6 +2063,7 @@ setInterval(updateDateTime, 1000);
 
 // Call the function immediately to set the initial date and time
 updateDateTime();
+
 
 
 
