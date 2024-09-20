@@ -1293,16 +1293,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  function openNav() {
-  document.getElementById("sidebar").style.left = "0";
-  document.getElementById("menu-icon").style.display = "none";
-}
-
-function closeNav() {
-  document.getElementById("sidebar").style.left = "-250px";
-  document.getElementById("menu-icon").style.display = "block";
-}
-
+  
   // Event listener for the "New Quote" button
   $("#new-quote").on("click", function () {
     const $newQuoteButton = $(this);
@@ -2074,6 +2065,15 @@ setInterval(updateDateTime, 1000);
 // Call the function immediately to set the initial date and time
 updateDateTime();
 
+function openNav() {
+  document.getElementById("sidebar").style.left = "0";
+  document.getElementById("menu-icon").style.display = "none";
+}
+
+function closeNav() {
+  document.getElementById("sidebar").style.left = "-250px";
+  document.getElementById("menu-icon").style.display = "block";
+}
 
 
 
