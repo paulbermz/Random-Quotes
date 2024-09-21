@@ -2068,12 +2068,32 @@ updateDateTime();
 function openNav() {
   document.getElementById("sidebar").style.left = "0";
   document.getElementById("menu-icon").style.display = "none";
+
+  // Add an event listener to close the sidebar when clicking anywhere on the document
+  document.addEventListener("click", handleOutsideClick);
 }
 
 function closeNav() {
   document.getElementById("sidebar").style.left = "-250px";
   document.getElementById("menu-icon").style.display = "block";
+
+  // Remove the event listener when the sidebar is closed
+  document.removeEventListener("click", handleOutsideClick);
 }
+
+function handleOutsideClick(event) {
+  // Check if the click was outside the sidebar
+  const sidebar = document.getElementById("sidebar");
+  const menuIcon = document.getElementById("menu-icon");
+  if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+    closeNav();
+  }
+}
+
+// Modify the sidebar open function to prevent closing immediately
+document.getElementById("sidebar").addEventListener("click", function (event) {
+  event.stopPropagation();
+});
 
 
 
