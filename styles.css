@@ -705,6 +705,7 @@ body.dark-mode #new-quote:hover {
 
 /* Close Button */
 .modal-header .close {
+  background-color: trabsparent;
   font-size: 1.5rem; /* Larger close button */
   color: #ff0000; /* Primary color for the close button */
 }
@@ -745,12 +746,8 @@ body.dark-mode #new-quote:hover {
 
 .modal-footer .btn-primary {
   background-color: #ff0000; /* Primary button color */
-  color: #fff; /* White text color */
 }
 
-.modal-footer .btn-primary:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
 
 /* Share Button Styling */
 .share-button {
