@@ -683,6 +683,12 @@ body.dark-mode #new-quote:hover {
   margin: 1.75rem auto; /* Center the modal vertically and horizontally */
 }
 
+/* Modal Container */
+.modal-dialog {
+  max-width: 600px; /* Adjust the width as needed */
+  margin: 1.75rem auto; /* Center the modal vertically and horizontally */
+}
+
 /* Modal Content */
 .modal-content {
   border-radius: 10px; /* Rounded corners */
@@ -705,7 +711,7 @@ body.dark-mode #new-quote:hover {
 
 /* Close Button */
 .modal-header .close {
-  background-color: trabsparent;
+  background-color: transparent;
   font-size: 1.5rem; /* Larger close button */
   color: #ff0000; /* Primary color for the close button */
 }
@@ -737,7 +743,6 @@ body.dark-mode #new-quote:hover {
 
 .modal-footer .btn-secondary {
   background-color: #e81616; /* Secondary button color */
-  color: #fff; /* White text color */
 }
 
 .modal-footer .btn-secondary:hover {
