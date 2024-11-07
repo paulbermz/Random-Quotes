@@ -261,19 +261,248 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        This system, crafted with a blend of dedication and passion for web development, showcases various
-                        features that enhance user interaction and accessibility. As a 2nd-year BSIT student aiming to become
-                        a full-stack web developer, I created this project to practice and improve my skills. The system offers 
-                        a wide array of quote categories that users can explore, with additional functionalities such as voice 
-                        synthesis for reading quotes aloud and easy social media sharing for spreading inspiration. The navigation 
-                        is designed to be intuitive, ensuring that users can easily move between sections like Home, Settings, Contact, 
-                        and About. The responsive design and the incorporation of dark mode and state persistence further enrich the user 
-                        experience, making the application flexible and enjoyable to use across different devices.
+                        // Import necessary packages
+import java.util.NoSuchElementException;
 
-                        As I continue my journey in learning and mastering full-stack development, this project reflects my current understanding and 
-                        growing expertise. It represents not just a functional tool, but a stepping stone in my ongoing education, where each feature 
-                        I've implemented has taught me valuable lessons in user interface design, accessibility, and efficient coding practices. 
-                        I'm excited to continue building on this foundation as I work towards becoming a proficient full-stack web developer.
+// Node class for linked list-based structures
+class Node {
+    int data;
+    Node next;
+    Node prev;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+// Stack implemented using a circular linked list
+class StackUsingCircularLinkedList {
+    Node top;
+
+    public void push(int data) {
+        Node newNode = new Node(data);
+        if (top == null) {
+            newNode.next = newNode; // Circular reference
+            top = newNode;
+        } else {
+            Node temp = top;
+            while (temp.next != top) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+            newNode.next = top;
+            top = newNode;
+        }
+    }
+
+    public int pop() {
+        if (top == null) {
+            throw new NoSuchElementException("Stack underflow");
+        }
+        int data = top.data;
+        if (top.next == top) {
+            top = null;
+        } else {
+            Node temp = top;
+            while (temp.next != top) {
+                temp = temp.next;
+            }
+            temp.next = top.next;
+            top = top.next;
+        }
+        return data;
+    }
+
+    public void display() {
+        if (top == null) {
+            System.out.println("Stack is empty");
+            return;
+        }
+        Node temp = top;
+        do {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        } while (temp != top);
+        System.out.println();
+    }
+}
+
+// Queue implemented using a doubly linked list
+class QueueUsingDoublyLinkedList {
+    Node front, rear;
+
+    public void enqueue(int data) {
+        Node newNode = new Node(data);
+        if (rear == null) {
+            front = rear = newNode;
+        } else {
+            rear.next = newNode;
+            newNode.prev = rear;
+            rear = newNode;
+        }
+    }
+
+    public int dequeue() {
+        if (front == null) {
+            throw new NoSuchElementException("Queue underflow");
+        }
+        int data = front.data;
+        front = front.next;
+        if (front != null) {
+            front.prev = null;
+        } else {
+            rear = null;
+        }
+        return data;
+    }
+
+    public void display() {
+        if (front == null) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        Node temp = front;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+}
+
+// Stack implemented using an array
+class StackUsingArray {
+    int[] stack;
+    int top;
+    int size;
+
+    StackUsingArray(int size) {
+        this.size = size;
+        stack = new int[size];
+        top = -1;
+    }
+
+    public void push(int data) {
+        if (top == size - 1) {
+            throw new StackOverflowError("Stack overflow");
+        }
+        stack[++top] = data;
+    }
+
+    public int pop() {
+        if (top == -1) {
+            throw new NoSuchElementException("Stack underflow");
+        }
+        return stack[top--];
+    }
+
+    public void display() {
+        if (top == -1) {
+            System.out.println("Stack is empty");
+            return;
+        }
+        for (int i = top; i >= 0; i--) {
+            System.out.print(stack[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+// Queue implemented using an array
+class QueueUsingArray {
+    int[] queue;
+    int front, rear, size;
+
+    QueueUsingArray(int size) {
+        this.size = size;
+        queue = new int[size];
+        front = -1;
+        rear = -1;
+    }
+
+    public void enqueue(int data) {
+        if ((rear + 1) % size == front) {
+            throw new IllegalStateException("Queue overflow");
+        }
+        if (front == -1) {
+            front = 0;
+        }
+        rear = (rear + 1) % size;
+        queue[rear] = data;
+    }
+
+    public int dequeue() {
+        if (front == -1) {
+            throw new NoSuchElementException("Queue underflow");
+        }
+        int data = queue[front];
+        if (front == rear) {
+            front = rear = -1;
+        } else {
+            front = (front + 1) % size;
+        }
+        return data;
+    }
+
+    public void display() {
+        if (front == -1) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        int i = front;
+        while (i != rear) {
+            System.out.print(queue[i] + " ");
+            i = (i + 1) % size;
+        }
+        System.out.print(queue[rear]);
+        System.out.println();
+    }
+}
+
+// Main class for testing
+public class Main {
+    public static void main(String[] args) {
+        // Test stacks
+        System.out.println("Stack using Circular Linked List:");
+        StackUsingCircularLinkedList stack1 = new StackUsingCircularLinkedList();
+        stack1.push(10);
+        stack1.push(20);
+        stack1.push(30);
+        stack1.display();
+        System.out.println("Popped: " + stack1.pop());
+        stack1.display();
+
+        System.out.println("\nStack using Array:");
+        StackUsingArray stack2 = new StackUsingArray(5);
+        stack2.push(40);
+        stack2.push(50);
+        stack2.push(60);
+        stack2.display();
+        System.out.println("Popped: " + stack2.pop());
+        stack2.display();
+
+        // Test queues
+        System.out.println("\nQueue using Doubly Linked List:");
+        QueueUsingDoublyLinkedList queue1 = new QueueUsingDoublyLinkedList();
+        queue1.enqueue(100);
+        queue1.enqueue(200);
+        queue1.enqueue(300);
+        queue1.display();
+        System.out.println("Dequeued: " + queue1.dequeue());
+        queue1.display();
+
+        System.out.println("\nQueue using Array:");
+        QueueUsingArray queue2 = new QueueUsingArray(5);
+        queue2.enqueue(400);
+        queue2.enqueue(500);
+        queue2.enqueue(600);
+        queue2.display();
+        System.out.println("Dequeued: " + queue2.dequeue());
+        queue2.display();
+    }
+}
                     </div>
                 </div>
             </div>
@@ -305,7 +534,6 @@
                     <a href="https://x.com/paulbermz" class="text-white me-3" title="Twitter"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.instagram.com/paulbrnl_?igsh=MXViN2FhMWhoMXp1aA==" class="text-white me-3" title="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://paulbermz.github.io/testing/" class="text-white" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
-                     <a href="https://paulbermz.github.io/testing/" class="text-white" title="Linkedin"><i class="fab fa-tiktok"></i></a>
                 </div>
               </div>
                  </div>
