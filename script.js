@@ -1314,7 +1314,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Revert button content to original text
-      $newQuoteButton.html("New");
+      $newQuoteButton.html("Next");
       stopSpeech(); // Stop any ongoing speech when a new or next quote is displayed
     }, 1000); // Simulate a brief loading time
   });
